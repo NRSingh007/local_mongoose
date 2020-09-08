@@ -17,6 +17,7 @@ app.set("view engine", "ejs");
 // database connection
 mongoose
   .connect("mongodb://localhost:27017/nodeAuth_jwt", {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -24,7 +25,7 @@ mongoose
   .catch((err) => console.log(err));
 
 var db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", console.error.bind(console, "connection error: "));
 
 db.once("open", function () {
   console.log("Connection Successful!");
